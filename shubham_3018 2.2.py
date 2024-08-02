@@ -1,0 +1,37 @@
+def take_inputs_and_store(filename):
+    
+    with open(filename, 'w') as file:
+        
+        for _ in range(5):
+            number = input("Enter a number: ")
+            file.write(number + "\n")
+    print(f"Numbers have been written to {filename}")
+
+def process_file(filename):
+    total_sum = 0
+    max_number = None
+    count_numbers = 0
+
+    
+    with open(filename, 'r') as file:
+        for line in file:
+            number = int(line.strip())
+            total_sum += number
+            if max_number is None or number > max_number:
+                max_number = number
+            count_numbers += 1
+
+    return total_sum, max_number, count_numbers
+
+
+def main():
+    filename = "Shubham_3018.txt"
+    take_inputs_and_store(filename)
+    
+    total_sum, max_number, count_numbers = process_file(filename)
+    print(f"Sum of all numbers: {total_sum}")
+    print(f"Maximum number: {max_number}")
+    print(f"Total count of numbers: {count_numbers}")
+
+if __name__ == "__main__":
+    main()
